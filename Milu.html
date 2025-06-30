@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Ella 💗</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffe0f0, #ffffff);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    #heart {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      color: red;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #heart:hover {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    #message {
+      display: none;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      color: #333;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .falling-heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #final {
+      display: none;
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 32px;
+      color: #d63384;
+      font-weight: bold;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    .highlight {
+      font-size: 42px;
+      color: #ff3366;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="heart">❤️</div>
+
+  <div id="message">
+    <p>A veces me cuesta creer que en tan poco tiempo hayas llegado tan profundo en mí…<br><br>
+    Pero lo hiciste. Con tus risas, tus audios largos, tus enojos espontáneos y hasta con esas respuestas que me dejan sin aire 😅<br><br>
+    Me haces bien. De verdad. Me gustás cuando estás feliz, pero también cuando estás seria, cuando te abres, cuando confías en mí… cuando eres tú.<br><br>
+    No eres perfecta, ni lo busco. Pero eres real, única… y eso es lo que más me mueve.<br><br>
+    Y aunque estemos lejos, te siento cerca.<br><br>
+    Así que gracias por aparecer, por quedarte, y por hacer que cada charla contigo tenga algo que me deje sonriendo solo.<br><br>
+    Te quiero más de lo que imaginás 💗</p>
+  </div>
+
+  <div id="final">
+    <span class="highlight">B</span> + <span class="highlight">M</span> = I love you 💖
+  </div>
+
+  <script>
+    const heart = document.getElementById('heart');
+    const message = document.getElementById('message');
+    const final = document.getElementById('final');
+
+    heart.addEventListener('click', () => {
+      heart.style.display = 'none';
+      message.style.display = 'block';
+      final.style.display = 'block';
+      createFallingHearts();
+    });
+
+    function createFallingHearts() {
+      for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        heart.innerHTML = "💗";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
